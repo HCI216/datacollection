@@ -22,17 +22,24 @@ var cssFilesToInject = [
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-  
-  // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
+  'bower_components/angular/angular.js',
+  'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+  'bower_components/angular-ui-router/release/angular-ui-router.js',
+  'bower_components/sails.io.js/dist/sails.io.js',
+  'bower_components/angularSails/dist/ngsails.io.js',
+  'bower_components/lodash/lodash.js',
+  'bower_components/moment/moment.js',
+  'bower_components/angular-moment/angular-moment.js',
 
-  // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
+  //
+  // *->    you might put other dependencies like jQuery or Angular here   <-*
+  //
 
-  // All of the rest of your client-side js files
-  // will be injected here in no particular order.
-  'js/**/*.js'
+  // All of the rest of your app scripts
+  'src/**/*.js'
 ];
+
+module.exports.jsFilesToInjectNoPathChange = jsFilesToInject;
 
 
 // Client-side HTML templates are injected using the sources below
@@ -45,9 +52,9 @@ var jsFilesToInject = [
 // templates get spit out to the same file.  Be sure and check out `tasks/README.md`
 // for information on customizing and installing new tasks.
 var templateFilesToInject = [
-  'templates/**/*.html'
+  // 'templates/**/*.html'
+  'src/**/*.tpl.html'
 ];
-
 
 
 // Prefix relative paths to source files so they point to the proper locations

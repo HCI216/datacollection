@@ -43,8 +43,6 @@ module.exports.routes = {
   'get /api/news':'NewsController.getAll',
   'post /api/addnews':'NewsController.create',
   'post /api/destroynews':'NewsController.destroy',
-  //welcome page
-  'get /welcome' : 'WelcomeController.index',
 
   // Custom routes here...
 
@@ -83,17 +81,6 @@ module.exports.routes = {
   'post /api/catalog/remove':'CatalogController.remove',
   'post /api/catalog/create':'CatalogController.create',
 
-  /**
-   * User routes
-   */
-  'get /api/user': 'UserController.getAll',
-  'get /api/user/:id': 'UserController.getOne',
-  'get /api/userscount': 'UserController.getPageCount',
-  'get /api/users': 'UserController.getPage',
-  'post /api/user': 'UserController.create',
-  'post /api/destroyuser': 'UserController.destroy',
-  'post /api/updateuser':'UserController.update',
-  'get /api/check':'UserController.check',
   /**
    * Message routes
    *
