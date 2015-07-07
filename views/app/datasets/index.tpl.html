@@ -1,0 +1,121 @@
+<div class="modal fade" id="removedatasetModal" tabindex="-1" role="dialog" aria-labelledby="removedatasetsModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>删除数据集？</h2>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">确定删除数据集？</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="button" data-dismiss="modal" ng-click="confirmRemoveDataset()">删除</button>
+                <button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <!--右边的panel start-->
+        <div class="col-md-12">
+            <div class="panel panel-default panel-primary">
+                <div class="panel-heading ">
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                        <div class="col-md-3 col-md-offset-8">
+                            <div class="input-group">
+                              <span class="input-group-btn ">
+                                  <button class="btn btn-success" ng-click="uploadmodal()" type="button">
+                                    <span class="glyphicon glyphicon-upload">
+                                    </span>
+                                    <span class="label label-success">上传</span>
+                                </button>
+                                </span>
+                              <span class="input-group-btn ">
+                                  <button class="btn btn-success" ng-click="newFile()" type="button">
+                                    <span class="glyphicon glyphicon-upload">
+                                    </span>
+                                    <span class="label label-default">新建</span>
+                                </button>
+                                </span>
+                                <input type="text" class="form-control" ng-model="query" placeholder="Search for..." />
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <div class=" scrollbar">
+                    <table class="datatable display table table-striped table-bordered table-condensed" id="datasets_table">
+                        <thead>
+                            <tr>
+                                <th>数据集名(数据库)</th>
+                                <th class="title sorting">原始文件名</th>
+                                <th class="description visible-desktop sorting">数据集说明</th>
+                                <th class="owner visible-desktop sorting">上传者</th>
+                                <th>公开(不公开)</th>
+                                <th>上传时间</th>
+                                <th>下载</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="dataset in datasets.data|filter:search">
+                                <td ng-mouseenter="btnShow=true" ng-mouseleave="btnShow=false" ng-init="btnShow=false">
+                                    <a href="/dataset/{{dataset.id}}" data-remote="true">{{dataset.name}}</a>
+                                    <div class=" pull-right" ng-show="btnShow&&(currentUser.isadmin=='true'||currentUser.id==dataset.owner.id)">
+                                        <!--按钮-->
+                                        <div class="btn-group">
+                                            <a class="btn btn-primary btn-xs" ng-click="removedataset(dataset)" data-target="#removedatasetModal" data-toggle="modal">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="/dataset/{{dataset.id}}" data-remote="true">{{dataset.filename}}</a>
+                                </td>
+                                <td class="visible-desktop description">
+                                    <div class="check-height fixed-height">{{dataset.description}}</div>
+                                </td>
+                                <td class="visible-desktop owner">
+                                  {{dataset.owner.username}}
+                                </td>
+                                <td>
+                                  <div class="label" ng-class="{true : 'label-success', false : 'label-warning'}[dataset.ispublic]">{{dataset.ispublic ? 'public' : 'private'}}</div>
+                                </td>
+                                <td>
+                                  <span>{{dataset.createdAt | amDateFormat:'YYYY年MM月DD日 HH:mm:ss'}}</span>
+                                </td>
+                                <td class="visible-desktop updated">
+                                  <a class="btn btn-xs  btn-success" href={{"datasetsdownload?tablename="+dataset.tablename+"&name="+dataset.name}}  target="_Blank">
+                                    下载<span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                  </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="panel-footer">
+                        <nav>
+                            <ul class="pager">
+                                <li>
+                                    <select ng-options="limit for limit in limits" ng-model="paginator.limit" ng-change="pageChanged(1)">项/页
+                                    </select>
+                                </li>
+                                <li><a ng-click="firstPage()">第一页</a></li>
+                                <li><a ng-click="prePage()">上一页</a></li>
+                                <li><a>第 {{ paginator.page }} / {{ paginator.total_pages }}页</a></li>
+                                <li><a ng-click="nextPage()">下一页</a></li>
+                                <li><a ng-click="lastPage()">最后一页</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

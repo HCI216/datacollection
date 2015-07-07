@@ -1,0 +1,191 @@
+<div class="modal fade" id="removenewsModal" tabindex="-1" role="dialog" aria-labelledby="removenewsModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>删除消息？</h2>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning">确定删除消息？</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="button" data-dismiss="modal" ng-click="confirmRemoveNews()">删除</button>
+        <button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>添加系统消息</h2>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <i id="loading" class="hidden fa fa-spinner fa-spin bigicon"></i>
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-2">标题 *</label>
+                <div class="col-md-10">
+                  <input id="title" class="form-control" name="title" type="text" placeholder="系统消息" ng-model="title" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-2">内容 *</label>
+                <div class="col-md-10">
+                  <textarea id="content" class="form-control" name="content" type="textarea" placeholder="系统通知..." ng-model="content" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="button" data-dismiss="modal" ng-click="msg()">提交</button>
+        <button class="btn btn-default" data-dismiss="modal" type="button">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <div class="panel panel-default panel-primary">
+          <div class="panel-heading ">
+            <!--标题头-->
+            <div class="row">
+              <div class="col-md-10">
+                <label class="label label-info">
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 系统通知
+                </label>
+              </div>
+              <div class="col-md-1" ng-show="currentUser.isadmin=='true'">
+                <!--按钮-->
+                <div class="btn-group">
+                  <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#msgModal">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scrollbar">
+            <div class="panel-group" id="messages" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default" ng-repeat="new in news">
+                <div class="panel-heading" role="tab" id={{ "new-"+new.id}} ng-mouseenter="btnShow=true" ng-mouseleave="btnShow=false" ng-init="btnShow=false">
+                  <div class="container-fluid row">
+                    <!--目录-->
+                    <div class="col-md-10">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#messages" data-target={{"#lv1-b-"+new.id}}  aria-expanded="false" aria-controls={{"lv1-b-"+new.id}}>
+                          <span class="glyphicon glyphicon-envelope"></span>
+                          {{new.title}}
+                        </a>
+                      </h4>
+                    </div>
+                    <div class="col-md-1" ng-show="btnShow&&(currentUser.isadmin=='true')">
+                      <!--按钮-->
+                      <div class="btn-group">
+                        <a class="btn btn-primary btn-xs" ng-click="removenews(new)" data-target="#removenewsModal" data-toggle="modal">
+                          <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id={{"lv1-b-"+new.id}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{"new-"+new.id}}>
+                  <div class="alert-success alert">
+                    {{new.content}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-defualt panel-primary">
+          <div class="panel-heading" role="tab" id="dheader">
+            <div class="container-fluid row">
+              <!--目录-->
+              <div class="col-md-8">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse"  data-target="#datasetlist"  aria-expanded="false" aria-controls="datasetlist">
+                    <span class="glyphicon glyphicon-folder-close"></span>
+                    数据集
+                  </a>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div id="datasetlist" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="dheader">
+            <div class="list-group">
+              <a class="list-group-item" href="/dataset/{{item.id}}" ng-repeat="item in datasetlist">
+                <div class="col-md-offset-1">
+                  <span class="glyphicon glyphicon-file"></span> {{item.name}}
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-defualt panel-primary">
+          <div class="panel-heading" role="tab" id="theader">
+            <div class="container-fluid row">
+              <!--目录-->
+              <div class="col-md-8">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-target="#templatelist"  aria-expanded="false" aria-controls="templatelist">
+                    <span class="glyphicon glyphicon-folder-close"></span>
+                    模板
+                  </a>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div id="templatelist" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="theader">
+            <div class="list-group">
+              <a class="list-group-item" href="/templates" ng-click="templatemodal(item)" ng-repeat="item in templatelist">
+                <div class="col-md-offset-1"><span class="glyphicon glyphicon-file"></span> {{item.name}}
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-defualt panel-primary">
+          <div class="panel-heading" role="tab" id="rheader">
+            <div class="container-fluid row">
+              <!--目录-->
+              <div class="col-md-8">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse"  data-target="#reportlist"  aria-expanded="false" aria-controls="reportlist">
+                    <span class="glyphicon glyphicon-folder-close"></span>
+                    报告
+                  </a>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div id="reportlist" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="rheader">
+            <div class="list-group">
+              <a class="list-group-item" href="/report/{{item.id}}" target="_Blank" ng-repeat="item in reportlist">
+                <div class="col-md-offset-1"><span class="glyphicon glyphicon-file"></span> {{item.name}}
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

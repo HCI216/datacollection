@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h3 class="modal-title">编辑目录 > {{opt.name}}</h3>
+    <select ng-model="select" ng-options="op for op in actions">
+    </select>
+    <hr>
+    <div class="modal-body">
+        <div class="animate-switch-container" ng-switch on="select">
+            <div class="input-group animate-switch" ng-switch-when="重命名">
+                <label for="dataset_name">重命名</label>
+                <input type="text" name="name" ng-model="opt.nName" required />
+            </div>
+            <div class="input-group animate-switch" ng-switch-when="新建">
+                <label for="dataset_name">新建文件夹</label>
+                <input type="text" name="celldata" ng-model="opt.name" required />
+            </div>
+            <div class="animate-switch" ng-switch-when="删除">
+                <div class="alert alert-warning">
+                    确定要删除目录?
+                    <p>{{ opt.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

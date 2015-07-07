@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h3 class="modal-title">上传您的数据集</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-3">
+                <label class="control-label">数据集名称:</label>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" type="text" name="dataset_name" ng-model="datasetsInfo.datasetName" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <label class="control-label">公开您的数据集:</label>
+            </div>
+            <div class="col-md-9">
+                <select class="form-control" name="ispublic" ng-options="item.label for item in datasetsInfo.ispublicOptions" ng-model="datasetsInfo.ispublic" required></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">
+                <label class="control-label">数据集说明:</label>
+            </div>
+            <div class="col-md-9">
+                <textarea class="form-control" ng-model="datasetsInfo.datasetDescription" name="dataset_description"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">确定</button>
+    <button class="btn btn-warning" ng-click="cancel()">取消</button>
+</div>

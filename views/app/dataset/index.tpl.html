@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="panel panel-default panel-primary">
+        <div class="panel-heading ">
+          <div class="row">
+            <div class="col-md-1">
+              <div class="input-group">
+                <div class="label">数据详情</div>
+            </div></div>
+            <div class="col-md-3 col-md-offset-7">
+              <div class="input-group">
+                <span class="input-group-btn ">
+                  <button class="btn btn-success" ng-click="deletecolumn()" type="button">
+                    <span class="glyphicon glyphicon-minus">
+                    </span>
+                    <span class="label label-success">删除列</span>
+                  </button>
+                </span>
+                <span class="input-group-btn ">
+                  <button class="btn btn-success" ng-click="newcolumn()" type="button">
+                    <span class="glyphicon glyphicon-plus">
+                    </span>
+                    <span class="label label-success">新建列</span>
+                  </button>
+                </span>
+                <span class="input-group-btn ">
+                  <button class="btn btn-success" ng-click="newrow()" type="button">
+                    <span class="glyphicon glyphicon-plus">
+                    </span>
+                    <span class="label label-success">新建行</span>
+                  </button>
+                </span>
+                <span class="input-group-btn ">
+                  <button class="btn btn-success" ng-click="deleterow()" type="button">
+                    <span class="glyphicon glyphicon-minus">
+                    </span>
+                    <span class="label label-success">删除行</span>
+                  </button>
+                </span>
+              </div>
+              <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
+          </div>
+          <!-- /.row -->
+        </div>
+
+        <div class="panel-body">
+          <div id="dataset_general_wrapper" class="row-fluid">
+            <div id="dataset_general" class="col-md-9">
+              <h2>{{ dataset.name }}</h2>
+              <div id="dataset_description" class="field well">
+                <strong>简介</strong>: {{ dataset.description }}
+              </div>
+            </div>
+            <!-- #dataset_general -->
+            <div id="dataset_misc_container" class="col-md-3 well">
+              <div id="dataset_permissions" class="list-group">
+                <li class="list-group-item">
+                  <h6>数据权限
+	            <span class="label label-success pull-right" ng-show="dataset.ispublic">{{dataset.ispublic?'public':'private'}}</span>
+                    <span class="label label-warning pull-right" ng-hide="dataset.ispublic">{{dataset.ispublic?'public':'private'}}</span>
+	          </h6>
+                </li>
+                <li class="list-group-item">
+                  <h6>上传者
+	            <span class="label label-success pull-right">{{dataset.owner.username}}</span>
+	          </h6>
+                </li>
+              </div>
+              <!-- #dataset_permissions -->
+              <div id="dataset_history" class="">
+                上传时间<span class="pull-right"> {{dataset.createdAt | amDateFormat:'YYYY年MM月DD日 HH:mm:ss'}}</span>
+                <br>
+              </div>
+              <!-- #dataset_history -->
+            </div>
+            <!-- #dataset_misc_container -->
+          </div>
+        </div>
+        <table class="table table-responsive table-striped table-condensed table-hover scrollbar">
+          <thead>
+            <tr>
+              <th ng-repeat="key in keys">{{key}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="data in datas" ng-init="row=$index">
+              <th ng-repeat="key in keys">
+                <a ng-click="editCell(row,$index)">{{data[key]}}</a>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--/div><!-- #dataset_general_wrapper -->
+    </div>
+  </div>
+</div>

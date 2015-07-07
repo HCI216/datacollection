@@ -1,0 +1,33 @@
+<div ng-controller="HeaderCtrl">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="cosarslogo">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">CoaSars</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active : isActive(navItem)}" ng-repeat="navItem in navItems">
+                        <a href="{{navItem.url}}"><span>{{navItem.title}}</span></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a> 用户: {{currentUser.username}}</a></li>
+                    <li><a href="/logout">登出</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>

@@ -1,0 +1,122 @@
+.panel-title > a{
+    cursor: pointer;
+}
+
+
+#bottom_navbar{
+    position:fixed;
+    height: 50px;
+    display:block;
+    width: 100%;
+    background: #333;
+    z-index:9;
+    text-align:center;
+    color: #f2f2f2;
+    padding:20px 0px;
+    bottom:0px;
+}
+
+.pager li{
+    cursor: pointer;
+}
+
+table .collapse.in {
+    display:table-row;
+}
+
+.scrollbar{
+    max-height: 600px;
+    min-height:500px;
+    overflow-y:scroll;
+}
+#flash-messages {
+  position: fixed;
+  background-color: rgba(94,187,94,1);
+  padding: 5px 15px;
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  top: 10px;
+  left: 50%;
+  margin-left: -100px;
+  border-radius: 5px;
+  font-size: .7em;
+  color:white;
+  
+}
+#flash-messages li {
+    list-style-type:none;
+}
+.slide-down { display: none !important; }
+.slide-down.ng-hide-remove {
+  display: block !important;
+  animation:
+    slide-down-enter 250ms ease-out,
+    slide-down-leave 500ms 3s ease;
+}
+
+@keyframes slide-down-enter {
+  from { opacity: 0; transform: translateY(-75%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down-leave {
+  from { opacity: 1; transform: translateY(0); } 
+  to { opacity: 0; transform: translateY(75%); }
+}
+#cg {
+    position: fixed;
+    z-index: 9999;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-box-shadow: 2px 2px 7px #CCC;
+    -moz-box-shadow: 2px 2px 7px #CCC;
+    -ms-box-shadow: 2px 2px 7px #CCC;
+    -o-box-shadow: 2px 2px 7px #CCC;
+    box-shadow: 2px 2px 7px #CCC;
+    -webkit-transition: all linear .6s;
+    -moz-transition: all linear .6s;
+    -ms-transition: all linear .6s;
+    -o-transition: all linear .6s;
+    transition: all linear .6s;
+}
+
+/* Remove colors and add transition property */
+.alert-flash {
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid transparent;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+    /* change transition property to all */
+    -webkit-transition-property: all;
+    transition-property: all;
+}
+
+.alert-flash h4 {
+    margin: 0;
+}
+
+.alert-flash .close {
+    position: fixed;
+    top: -2px;
+    right: -21px;
+    line-height: 20px;
+}
+
+/* add warning colors to warn class */
+.alert-warn {
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+}
+
+.alert-warn,
+.alert-warn h4 {
+    color: #c09853;
+}

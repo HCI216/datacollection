@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h3 class="modal-title">发送报告到邮箱</h3>
+</div>
+<div class="modal-body dataset-file">
+    <form class="form-horizontal">
+        <label class="col-md-9 col-md-offset-3">允许发送到多个邮箱,邮箱间以逗号分隔</label>
+        <div class="form-group">
+            <div class="col-md-3">
+                <label class="control-label">您的邮箱地址：</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" placeholder="" ng-model="mailOpt.receiver" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">
+                <label class="control-label">邮件主题:</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" ng-model="mailOpt.subject">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">
+                <label class=" control-label">邮件正文:</label>
+            </div>
+            <div class="col-md-9">
+                <textarea ng-model="mailOpt.text" class="form-control"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="sendreport()">确定</button>
+    <button class="btn btn-warning" ng-click="cancel()">取消</button>
+</div>

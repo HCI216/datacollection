@@ -81,5 +81,13 @@ module.exports = {
    ***************************************************************************/
 
    // environment: process.env.NODE_ENV || 'development'
-
+  site:"http://www.coasars.com",
+  opencpu : {
+    server : "http://123.56.106.178:8100",
+    root : "/ocpu"
+  },
+  postgres : {
+    user:"postgres",
+    password:"123456"
+  }
 };

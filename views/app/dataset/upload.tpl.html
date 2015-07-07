@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <h3 class="modal-title">Upload dataset</h3>
+</div>
+<div class="modal-body dataset-file">
+    <div class="input-group">
+        <label for="dataset_name">Dataset Name:</label>
+        <input type="text" name="dataset_name" ng-model="datasetsInfo.datasetName" required />
+
+        <p>{{ datasetsInfo.datasetName }}</p>
+    </div>
+
+    <div class="input-group">
+        <label for="ispublic">Is Public:</label>
+        <select name="ispublic" ng-options="item.name for item in datasetsInfo.ispublicOptions" ng-model="datasetsInfo.ispublic" required></select>
+
+        <p>{{ datasetsInfo.ispublic }}</p>
+    </div>
+
+    <div class="input-group">
+        <label for="dataset_description">Description:</label>
+        <textarea ng-model="datasetsInfo.datasetDescription" name="dataset_description"></textarea>
+        <p>{{ datasetsInfo.datasetDescription }}</p>
+    </div>
+
+    <input type="file" nv-file-select="" uploader="uploader" multiple />
+    <div>
+        <ul>
+            <li ng-repeat="item in uploader.queue">
+                <div>Name: {{ item.file.name }}</div>
+                <div>Size: {{ item.file.size/1024/1024|number:2 }} Mb</div>
+                <div ng-show="uploader.isHTML5">
+                    Progress: {{ item.progress }}
+                    <div class="item-progress-box">
+                        <div class="item-progress" ng-style="{ 'width': item.progress + '%' }"></div>
+                    </div>
+                </div>
+                <div>
+                    <button ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">Upload</button>
+                    <button ng-click="item.cancel()" ng-disabled="!item.isUploading">Cancel</button>
+                    <button ng-click="item.remove()">Remove</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

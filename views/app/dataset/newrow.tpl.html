@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h3 class="modal-title">数据编辑-新建行</h3>
+</div>
+<div class="modal-body dataset-file">
+  <div class="input-group">
+    <label for="dataset_name">请输入新建行数据:</label>
+    <input type="text" name="celldata" ng-model="rowInfo.name" placeholder="如：xxx,xxx,使用逗号做分割" required />
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
