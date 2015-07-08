@@ -30,6 +30,7 @@ var jsFilesToInject = [
   'bower_components/lodash/lodash.js',
   'bower_components/moment/moment.js',
   'bower_components/angular-moment/angular-moment.js',
+  'assets/bower_components/angular-file-upload/angular-file-upload.js',
 
   //
   // *->    you might put other dependencies like jQuery or Angular here   <-*
