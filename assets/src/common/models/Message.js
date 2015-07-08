@@ -1,4 +1,4 @@
-angular.module('models.message', ['lodash', 'services', 'ngSails'])
+angular.module('models.message', ['lodash', 'services', 'sails.io'])
 
 .service('MessageModel', function($q, lodash, utils, $sails) {
 	this.getAll = function() {

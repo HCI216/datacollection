@@ -1,4 +1,4 @@
-angular.module('models.user', ['lodash', 'services', 'ngSails'])
+angular.module('models.user', ['lodash', 'services', 'sails.io'])
 
 .service('UserModel', function($q, lodash, utils, $sails) {
 	this.getAll = function() {
