@@ -33,9 +33,11 @@ module.exports = {
     DatasetsInfo.count({
       or: [{
         ispublic: true
-      }, {
-        owner: req.user.id
-      }]
+      }
+      //  , {
+      //  owner: req.user.id
+      //}
+      ]
     }).exec(function countCB(error, found) {
       res.json({
         count: found

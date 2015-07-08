@@ -27,8 +27,15 @@
                     </div>
                   </li>
 
-                  <li ng-repeat="navItem in navItems">
+                  <li ng-if="currentUser != null" ng-repeat="navItem in navItems">
                     <a href="{{navItem.url}}"><i class="{{navItem.cssClass}}"></i> {{navItem.title}}</a>
+                  </li>
+
+                  <li ng-if="currentUser == null || currentUser == ''">
+                    <a href="javascript:void(0);" ng-click="register()"><i class=""></i> 注册</a>
+                  </li>
+                  <li ng-if="currentUser == null || currentUser == ''">
+                    <a href="javascript:void(0);" ng-click="login()"><i class=""></i> 登陆</a>
                   </li>
                 </ul>
             </div>

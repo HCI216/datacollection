@@ -3,6 +3,7 @@ angular.module( 'sailng', [
   'sails.io',
   //'ngSails',
   'angularMoment',
+  'angularFileUpload',
   'lodash',
   'angularMoment',
   'ui.bootstrap',

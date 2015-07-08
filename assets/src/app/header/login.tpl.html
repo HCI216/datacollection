@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4 class="modal-title">Login with your account</h4>
+</div>
+<div class="modal-body">
+  <form method="POST">
+    <div class="form-group">
+      <label>用户名</label>
+      <input type="text" class="form-control" name="identifier" placeholder="Username"/>
+    </div>
+    <div class="form-group">
+      <label>密码</label>
+      <input type="password" class="form-control" name="password" placeholder="Password"/>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-right" ng-click="ok()">Sign in</button>
+        <button class="btn btn-warning btn-left" ng-click="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
