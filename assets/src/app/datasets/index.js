@@ -139,7 +139,6 @@ angular.module('sailng.datasets', ['angularFileUpload'])
             var modalInstance = $modal.open({
                 templateUrl: 'datasets/upload.tpl.html',
                 controller: 'UploadInstanceCtrl',
-                size: "lg",
                 resolve: {
                     datasetsInfo: function() {
                         return {};
@@ -178,7 +177,6 @@ angular.module('sailng.datasets', ['angularFileUpload'])
             var modalInstance = $modal.open({
                 templateUrl: 'datasets/newdataset.tpl.html',
                 controller: 'newInstanceCtrl',
-                size: "lg",
                 resolve: {
                     datasetsInfo: function() {
                         return {};
@@ -196,6 +194,7 @@ angular.module('sailng.datasets', ['angularFileUpload'])
                   ispublic: dataset_info.ispublic.value,
                   description: dataset_info.datasetDescription
                 }).success(function(data, status, headers, config) {
+                  alert(data+ "====");
                   $log.info('success create new dataset');
                   $rootScope.$emit('notification', '新建数据集成功');
                 }).error(function(data) {
@@ -296,7 +295,7 @@ angular.module('sailng.datasets', ['angularFileUpload'])
     .controller('newInstanceCtrl', function($scope, $modalInstance, FileUploader, datasetsInfo) {
         // -----------------------------------  input -------------------------
         $scope.datasetsInfo = datasetsInfo;
-      $scope.datasetsInfo.datasetName = "";
+        $scope.datasetsInfo.datasetName = "";
         $scope.datasetsInfo.ispublicOptions = [{
             label: '公开',
             value: true

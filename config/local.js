@@ -85,11 +85,10 @@ module.exports = {
   opencpu : {
     server : "http://123.56.106.178:8100",
     root : "/ocpu"
+  },
+  postgres : {
+    adapter: "sails-postgresql",
+    user:"postgres",
+    password:"123456"
   }
-  //,
-  //postgres : {
-  //  adapter: "sails-postgresql",
-  //  user:"postgres",
-  //  password:"123456"
-  //}
 };

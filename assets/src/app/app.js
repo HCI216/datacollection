@@ -15,12 +15,8 @@ angular.module( 'sailng', [
   'sailng.header',
   'sailng.footer',
   'sailng.home',
-  'sailng.messages',
   'sailng.datasets',
-  'sailng.templates',
-  'sailng.dataset',
-  'sailng.reports',
-  'sailng.settings'
+  'sailng.dataset'
 ])
 
   .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider) {
