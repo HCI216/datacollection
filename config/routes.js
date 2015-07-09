@@ -39,12 +39,6 @@ module.exports.routes = {
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
 
-  //news
-  'get /api/news':'NewsController.getAll',
-  'post /api/addnews':'NewsController.create',
-  'post /api/destroynews':'NewsController.destroy',
-
-  // Custom routes here...
 
   ///数据集信息api
   //读取数据集
@@ -56,40 +50,7 @@ module.exports.routes = {
   'post /api/datasets': 'DatasetsInfoController.create',
   'post /api/destroydataset': 'DatasetsInfoController.destroy',
   ///算法信息api
-  //读取模板参数
-  'get /api/templateparams':'TemplatesInfoController.getParams',
-  'get /api/templates': 'TemplatesInfoController.getPage',
-  'get /api/templatescount': 'TemplatesInfoController.getPageCount',
-  'get /api/templates/:id': 'TemplatesInfoController.getOne',
-  'post /api/templates': 'TemplatesInfoController.create',
-  'post /api/destroytemplate': 'TemplatesInfoController.destroy',
 
-  ///报告信息api
-  'get /api/reports': 'ReportsInfoController.getPage',
-  'get /api/reportscount':'ReportsInfoController.getPageCount',
-  'get /report/:id': 'ReportsInfoController.getOne',
-  'post /api/destroyreport': 'ReportsInfoController.destroy',
-  //email发送报告
-  'post /api/sendreport': 'ReportsInfoController.send',
-
-  //生成报告
-  'post /api/reports': 'ReportsInfoController.create',
-
-  ///目录信息api
-  'get /api/catalog':'CatalogController.catalog',
-  'post /api/catalog/rename':'CatalogController.rename',
-  'post /api/catalog/remove':'CatalogController.remove',
-  'post /api/catalog/create':'CatalogController.create',
-
-  /**
-   * Message routes
-   *
-   */
-
-  'get /api/message': 'MessageController.getAll',
-  'get /api/message/:id': 'MessageController.getOne',
-  'post /api/message': 'MessageController.create',
-  'delete /api/message/:id': 'MessageController.destroy',
 
   /*
    * Datasets routes
@@ -113,13 +74,6 @@ module.exports.routes = {
   // and examples.
 
   'get /home': 'HomeController.index',
-  'get /messages': 'HomeController.index',
   'get /datasets': 'HomeController.index',
-  'get /templates': 'HomeController.index',
-  'get /reports': 'HomeController.index',
-  'get /dataset/:datasetId': 'HomeController.index',
-  'get /report': 'HomeController.index',
-  'get /settings': 'HomeController.index',
-  'get /auth': 'HomeController.index'
-  //'get /register': 'HomeController.index'
+  'get /dataset/:datasetId': 'HomeController.index'
 };
