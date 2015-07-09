@@ -28,8 +28,8 @@ module.exports.routes = {
 
   //single page
   'get /': {
-    controller: 'HomeController',
-    action: 'index'
+    controller: 'AuthController',
+    action: 'login'
   },
 
   'get /login': 'AuthController.login',
@@ -119,5 +119,7 @@ module.exports.routes = {
   'get /reports': 'HomeController.index',
   'get /dataset/:datasetId': 'HomeController.index',
   'get /report': 'HomeController.index',
-  'get /settings': 'HomeController.index'
+  'get /settings': 'HomeController.index',
+  'get /auth': 'HomeController.index'
+  //'get /register': 'HomeController.index'
 };

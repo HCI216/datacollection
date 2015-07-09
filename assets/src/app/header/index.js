@@ -1,6 +1,6 @@
 angular.module('sailng.header', [])
 
-.controller('HeaderCtrl', function HeaderController($scope, $state, config, $modal, $log) {
+.controller('HeaderCtrl', function HeaderController($scope, $state, config, $modal, $log, $http,$rootScope) {
         $scope.currentUser = config.currentUser;
 
         var navItems = [];
@@ -22,9 +22,7 @@ angular.module('sailng.header', [])
             return false;
         };
 
-    $scope.parseEvent = function($url) {
-      return $url;
-    }
+
 
     $scope.login = function() {
 
@@ -32,26 +30,57 @@ angular.module('sailng.header', [])
         templateUrl: 'header/login.tpl.html',
         controller: 'loginCtrl',
         resolve: {
-          datasetsInfo: function() {
+          user: function() {
             return {};
           }
         }
       });
 
-      modalInstance.result.then(function(dataset_info) {
-        console.log("dataset_Info : " + angular.toJson(dataset_info));
-        $http.post('/api/newdataset', {
-          name: dataset_info.datasetName,
-          filename: 'blank.csv',
-          path: '/tmp/sailng-upload/',
-          tablename: 'blank',
-          ispublic: dataset_info.ispublic.value,
-          description: dataset_info.datasetDescription
+      modalInstance.result.then(function(user) {
+        console.log("login_Info : " + angular.toJson(user));
+        $http.post('/auth/local', {
+          identifier: user.identifier,
+          password: user.password
         }).success(function(data, status, headers, config) {
-          $log.info('success create new dataset');
-          $rootScope.$emit('notification', '新建数据集成功');
+          $log.info('success login' + data);
+          $rootScope.$emit('notification', '登陆成功');
         }).error(function(data) {
-          $rootScope.$emit('notification', '新建数据集失败');
+          $rootScope.$emit('notification', '登陆失败');
+          alert("failed:" + JSON.stringify({
+            data: data
+          }));
+        });
+      }, function() {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+
+    $scope.register = function() {
+
+      var modalInstance = $modal.open({
+        templateUrl: 'header/register.tpl.html',
+        controller: 'registerCtrl',
+        resolve: {
+          user: function() {
+            return {};
+          }
+        }
+      });
+      modalInstance.result.then(function(user_info) {
+        console.log("register_Info : " + angular.toJson(user_info));
+        var emails = new Array();
+        emails.push(user_info.email);
+        console.log(user_info.email + '===' + user_info.password + '====' +user_info.name);
+        $http.post('/auth/local/register', {
+          username: user_info.name,
+          email: user_info.email,
+          password: user_info.password,
+          first_name: 'default_name'
+        }).success(function(data, status, headers, config) {
+          $log.info('success create new user' + data);
+          $rootScope.$emit('notification', '注册成功');
+        }).error(function(data) {
+          $rootScope.$emit('notification', '注册失败');
           alert("failed:" + JSON.stringify({
             data: data
           }));
@@ -62,25 +91,33 @@ angular.module('sailng.header', [])
     };
   })
 
-.controller('loginCtrl', function($scope, $modalInstance, FileUploader, datasetsInfo) {
+.controller('loginCtrl', function($scope, $modalInstance, user) {
+    $scope.user = user;
+    $scope.user.identifier = "";
+    $scope.user.password = "";
+
+  $scope.ok = function() {
+    console.log("result:", $scope.user);
+    $modalInstance.close($scope.user);
+  };
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss('cancel');
+  };
+})
+
+.controller('registerCtrl', function($scope, $modalInstance, user) {
   // -----------------------------------  input -------------------------
-  $scope.datasetsInfo = datasetsInfo;
-  $scope.datasetsInfo.datasetName = "";
-  $scope.datasetsInfo.ispublicOptions = [{
-    label: '公开',
-    value: true
-  }, {
-    label: '不公开',
-    value: false
-  }];
-  $scope.datasetsInfo.ispublic = $scope.datasetsInfo.ispublicOptions[1];
-  $scope.datasetsInfo.datasetDescription = "";
+  $scope.user = user;
+  $scope.user.name = "";
+  $scope.user.email = "";
+  $scope.user.password = "";
 
   //--------------------------------- result callback  ------------------------------
 
   $scope.ok = function() {
-    console.log("result:", $scope.datasetsInfo);
-    $modalInstance.close($scope.datasetsInfo);
+    console.log("ok:", $scope.user);
+    $modalInstance.close($scope.user);
   };
 
   $scope.cancel = function() {
