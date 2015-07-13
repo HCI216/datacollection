@@ -19,6 +19,7 @@ module.exports = {
 
   models: {
      connection: 'somePostgresqlServer'
-  }
+  },
+  port: 1338
 
 };

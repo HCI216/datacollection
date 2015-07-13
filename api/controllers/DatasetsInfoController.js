@@ -78,6 +78,9 @@ module.exports = {
 
   getOne: function(req, res) {
     //part 1 : datasetInfo
+    var start = new Date();
+
+    console.log('====start: ' + start.getTime());
 
     DatasetsInfo.getOne(req.param('id'))
       .spread(function(model) {
@@ -87,6 +90,9 @@ module.exports = {
         console.log(opt.tablename);
         //获取数据
         OpenCPU.DataQueryFromPSQL(opt, function(err, data) {
+          var end = new Date();
+          console.log('====end: ' + end.getTime());
+          console.log('====ddd: ' + (end.getTime()-start.getTime()));
           if (err) {
             console.log("--------DataQueryFromPSQL CALLBACKS ERROR " + JSON.stringify(data));
             res.json({

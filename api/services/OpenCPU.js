@@ -1,34 +1,5 @@
 // Opencpu.js - in api/services
 module.exports = {
-
-    ///生成报告
-    /*
-    params:
-     {
-     callstring:'/library/xxx/R/xxxx/json'
-     methodOpt:{
-     user:'xxx',
-     password:'xxx',
-     host:'xxx',
-     ... : '...'
-
-
-     param1:'xxx',
-     param2:'xxx'
-     }
-     }
-     */
-    reportGenerate: function(params, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
-        //rpc接口选项
-        var RPCOpt = {
-            server: local.opencpu.server,
-            root: local.opencpu.root
-        };
-        console.log(JSON.stringify(params));
-        opencpu.rCall('/library/CoaSars/R/' + params.callstring + "/json", params.methodOpt, callback, RPCOpt);
-    },
     ///Read file into db-----------------------------------------------/////
     /*
      opt:
