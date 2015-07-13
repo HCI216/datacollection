@@ -32,7 +32,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
             var modalInstance = $modal.open({
                 templateUrl: 'dataset/editcell.tpl.html',
                 controller: 'EditCellCtrl',
-                size: "sm",
+                //size: "sm",
                 resolve: {
                     cellData: function() {
                         return {
@@ -71,7 +71,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
               var modalInstance = $modal.open({
                 templateUrl: 'dataset/newcolumn.tpl.html',
                 controller: 'NewColumnCtrl',
-                size: "sm",
+                //size: "sm",
                 resolve: {}
             });
             modalInstance.result.then(function(columnInfo) {
@@ -99,7 +99,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
       var modalInstance = $modal.open({
         templateUrl: 'dataset/deletecolumn.tpl.html',
         controller: 'DeleteColumnCtrl',
-                size: "sm",
+                //size: "sm",
                 resolve: {}
             });
             modalInstance.result.then(function(columnInfo) {
@@ -126,7 +126,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
               var modalInstance = $modal.open({
                 templateUrl: 'dataset/newrow.tpl.html',
                 controller: 'NewRowCtrl',
-                size: "sm",
+                //size: "sm",
                 resolve: {}
             });
             modalInstance.result.then(function(rowInfo) {
@@ -153,7 +153,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
       var modalInstance = $modal.open({
         templateUrl: 'dataset/deleterow.tpl.html',
         controller: 'DeleteRowCtrl',
-                size: "sm",
+                //size: "sm",
                 resolve: {}
             });
             modalInstance.result.then(function(rowInfo) {

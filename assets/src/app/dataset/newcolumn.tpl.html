@@ -1,18 +1,19 @@
 <div class="modal-header">
-    <h3 class="modal-title">数据编辑</h3>
+    <h3 class="modal-title">数据编辑-新建列</h3>
 </div>
 <div class="modal-body dataset-file">
-    <div class="input-group col-md-12">
-      <label class="col-md-3" for="dataset_name">请输入列名:</label>
-      <input type="text" name="celldata" ng-model="columnInfo.name" required />
+    <div class="form-group">
+      <label>请输入列名:</label>
+      <input type="text" class="form-control" name="celldata" ng-model="columnInfo.name" required />
     </div>
-    <div class="input-group  col-md-12">
-      <label class="col-md-3">选择数据类型:</label>
-      <select  ng-options="datatype.label for datatype in datatypes" ng-model="columnInfo.datatype">
+    <div class="form-group">
+      <label>选择数据类型:</label>
+      <select class="form-control"  ng-options="datatype.label for datatype in datatypes" ng-model="columnInfo.datatype">
         <option value="">--请选择数据类型--</option>
       </select>
     </div>
+</div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary btn-right" ng-click="ok()">OK</button>
+    <button class="btn btn-warning btn-left" ng-click="cancel()">Cancel</button>
 </div>

@@ -28,8 +28,8 @@ module.exports.routes = {
 
   //single page
   'get /': {
-    controller: 'AuthController',
-    action: 'login'
+    controller: 'HomeController',
+    action: 'index'
   },
 
   'get /login': 'AuthController.login',
