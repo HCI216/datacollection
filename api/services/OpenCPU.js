@@ -41,7 +41,7 @@ module.exports = {
             function(err, stdout, stderr) {
                 console.log(stdout);
             });
-        console.log(RPCOpt);
+        console.log("rpcOpt: " + RPCOpt);
         opencpu.rCall("/library/CoaSars/R/readDBtoPSQL/json", methodOpt, callback, RPCOpt);
     },
 
