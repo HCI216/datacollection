@@ -232,7 +232,8 @@ module.exports = {
             });
           } else {
             res.json({
-              status: 'OK'
+              status: 'OK',
+              id: created.id
             });
             console.log('dataset inserted of: ' + created.name);
           }
