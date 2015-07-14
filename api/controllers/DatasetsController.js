@@ -45,7 +45,7 @@ module.exports = {
               status: "error"
             });
           } else {
-            console.log("--------DataQueryFromPSQL CALLBACKS Success!");
+            console.log("--------DataQueryFromPSQL CALLBACKS Success! ---- Add Column");
             res.json({
               celldata: opt,
               data: data,

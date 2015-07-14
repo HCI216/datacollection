@@ -177,7 +177,7 @@ module.exports = {
      width:4
      }
      */
-    dataEditAddColumn: function(opt) {
+    dataEditAddColumn: function(opt, callback) {
         var local = require("../../config/local.js");
         var opencpu = require("opencpu");
 
@@ -186,10 +186,11 @@ module.exports = {
             server: local.opencpu.server,
             root: local.opencpu.root
         };
+
         //Showtable方法选项
         var methodOpt = {
             colname: opt.colname,
-            datatype: opt.type,
+            datatype: opt.datatype,
             width: opt.width,
             tablename: opt.tablename,
             host: 'localhost',
@@ -197,14 +198,7 @@ module.exports = {
             user: local.postgres.user,
             password: local.postgres.password
         };
-        opencpu.rCall("/library/CoaSars/R/AddColumn/json", methodOpt, function(err, data) {
-            if (!err) {
-                res.json({});
-            } else {
-                console.log("opencpu call failed.");
-                res.json({});
-            }
-        }, RPCOpt);
+        opencpu.rCall("/library/CoaSars/R/AddColumn/json", methodOpt, callback, RPCOpt);
     },
 
     //修改单个数据
@@ -244,21 +238,21 @@ module.exports = {
    value:xxx
    }
    */
-  dataEditAddColumn: function(opt, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
-        //rpc接口选项
-        var RPCOpt = {
-            server: local.opencpu.server,
-            root: local.opencpu.root
-        };
-        //Showtable方法选项
-        var methodOpt = {
-          colname:opt.colname,
-          tablename:opt.tablename
-        };
-        opencpu.rCall("/library/CoaSars/R/AddColumn/json", methodOpt, callback, RPCOpt);
-    },
+  //dataEditAddColumn: function(opt, callback) {
+  //      var local = require("../../config/local.js");
+  //      var opencpu = require("opencpu");
+  //      //rpc接口选项
+  //      var RPCOpt = {
+  //          server: local.opencpu.server,
+  //          root: local.opencpu.root
+  //      };
+  //      //Showtable方法选项
+  //      var methodOpt = {
+  //        colname:opt.colname,
+  //        tablename:opt.tablename
+  //      };
+  //      opencpu.rCall("/library/CoaSars/R/AddColumn/json", methodOpt, callback, RPCOpt);
+  //  },
 
     //添加列
   /*

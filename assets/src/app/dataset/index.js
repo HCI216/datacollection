@@ -16,7 +16,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
         $scope.datasetId = $stateParams.datasetId;
         $scope.dataset = {};
         $http.get("api/datasets/" + $scope.datasetId).success(function(data, status, headers, config) {
-            console.log(angular.toJson(data).info);
+            console.log(angular.toJson(data.info));
             $scope.dataset = (data.info);
             $scope.datas = angular.fromJson(data.data);
             $scope.keys = [], log = [];
