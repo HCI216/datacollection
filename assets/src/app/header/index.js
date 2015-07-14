@@ -9,8 +9,8 @@ angular.module('sailng.header', [])
           navItems.push({title: '注册', translationKey: 'navigation:register', url: '/register', cssClass: ''});
           navItems.push({title: '登陆', translationKey: 'navigation:login', url: '/login', cssClass: ''});
         } else {
-          navItems.push({title: '个人信息', translationKey: 'navigation:info', url: '/info', cssClass: ''});
-          navItems.push({title: '账号设置', translationKey: 'navigation:setting', url: '/setting', cssClass: ''});
+          navItems.push({title: '个人信息', translationKey: 'navigation:info', url: 'javascript:void(0);', cssClass: ''});
+          navItems.push({title: '账号设置', translationKey: 'navigation:setting', url: 'javascript:void(0);', cssClass: ''});
         }
 
         $scope.navItems = navItems;

@@ -54,7 +54,8 @@ angular.module('sailng.dataset', ['angularFileUpload'])
                   data: cellData.data
                 }).success(function(data, status, headers, config) {
                     if (data.status != "error") {
-                        $scope.datas[data.celldata.row][data.celldata.colname] = data.celldata.data;
+                      window.location.reload();
+                      $scope.datas[data.celldata.row][data.celldata.colname] = data.celldata.data;
                         $log.info('dataCell Edit Success!');
                     }
                 }).error(function(data) {
@@ -81,6 +82,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
                 tablename:$scope.dataset.tablename
                 }).success(function(data, status, headers, config) {
                     if (data.status != "error") {
+                      window.location.reload();
                       $rootScope.$emit('notification', '添加列成功');
                       $log.info('Add new column Success!');
                     }else{
@@ -108,6 +110,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
                 tablename:$scope.dataset.tablename
                 }).success(function(data, status, headers, config) {
                     if (data.status != "error") {
+                      window.location.reload();
                       $rootScope.$emit('notification', '删除列成功');
                       $log.info('Add new column Success!');
                     }else{
@@ -135,6 +138,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
                 tablename:$scope.dataset.tablename
                 }).success(function(data, status, headers, config) {
                     if (data.status != "error") {
+                      window.location.reload();
                       $rootScope.$emit('notification', '添加行成功');
                       $log.info('Add new row Success!');
                     }else{
@@ -162,6 +166,7 @@ angular.module('sailng.dataset', ['angularFileUpload'])
                 tablename:$scope.dataset.tablename
                 }).success(function(data, status, headers, config) {
                     if (data.status != "error") {
+                      window.location.reload();
                       $rootScope.$emit('notification', '删除列成功');
                       $log.info('Add new row Success!');
                     }else{

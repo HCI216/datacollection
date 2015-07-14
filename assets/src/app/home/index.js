@@ -39,6 +39,7 @@ angular.module('sailng.home', ['angularFileUpload'])
           ispublic: dataset_info.ispublic.value,
           description: dataset_info.datasetDescription
         }).success(function(data, status, headers, config) {
+          window.location.href = '/datasets';
           $log.info('success upload dataset');
           $rootScope.$emit('notification', '上传数据集成功');
         }).error(function(data) {
