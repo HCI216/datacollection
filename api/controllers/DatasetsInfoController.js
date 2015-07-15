@@ -80,10 +80,15 @@ module.exports = {
     //part 1 : datasetInfo
     var start = new Date();
 
-    console.log('====start: ' + start.getTime());
+    console.log('====1: ' + start.getTime());
 
     DatasetsInfo.getOne(req.param('id'))
       .spread(function(model) {
+
+        var middle = new Date();
+
+        console.log('====sails: ' + (middle.getTime() - start.getTime()) + "ms");
+
         var opt = {
           tablename: model.tablename
         };
@@ -91,8 +96,7 @@ module.exports = {
         //获取数据
         OpenCPU.DataQueryFromPSQL(opt, function(err, data) {
           var end = new Date();
-          console.log('====end: ' + end.getTime());
-          console.log('====ddd: ' + (end.getTime()-start.getTime()));
+          console.log('====opencpu: ' + (end.getTime()-middle.getTime()) + "ms");
           if (err) {
             console.log("--------DataQueryFromPSQL CALLBACKS ERROR " + JSON.stringify(data));
             res.json({

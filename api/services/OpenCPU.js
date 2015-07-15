@@ -1,3 +1,6 @@
+var local = require("../../config/local.js");
+var opencpu = require("opencpu");
+var exec = require('child_process').exec;
 // Opencpu.js - in api/services
 module.exports = {
     ///Read file into db-----------------------------------------------/////
@@ -10,11 +13,8 @@ module.exports = {
      }
      */
     dataReadIntoDB: function(opt, callback) {
-        var path = require('path');
-        var fullpath = path.join(opt.fold, opt.name);
-        var local = require("../../config/local.js");
+
         console.log("------file path" + fullpath + " into db!");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -32,7 +32,7 @@ module.exports = {
             password: local.postgres.password
         };
         //修改文件权限
-        var exec = require('child_process').exec;
+
         var child = exec('chown www-data ' + fullpath,
             function(err, stdout, stderr) {
                 console.log(stdout);
@@ -53,8 +53,6 @@ module.exports = {
      }
      */
     DataQueryFromPSQL: function(opt, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -80,8 +78,6 @@ module.exports = {
      }
      */
     dataEditCreateTable: function(opt) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -109,8 +105,6 @@ module.exports = {
   /*
    */
   dataQueryListTable: function() {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -141,8 +135,6 @@ module.exports = {
      }
      */
     dataEditRemoveTable: function(opt) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -178,9 +170,6 @@ module.exports = {
      }
      */
     dataEditAddColumn: function(opt, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
-
       //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -212,8 +201,6 @@ module.exports = {
      }
      */
     dataEditUpdateData: function(opt, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -265,8 +252,6 @@ module.exports = {
    }
    */
   dataEditDeleteColumn: function(opt, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -290,8 +275,6 @@ module.exports = {
    }
    */
   dataEditAddRow: function(opt, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -316,8 +299,6 @@ module.exports = {
    }
    */
   dataEditDeleteRow: function(opt, callback) {
-        var local = require("../../config/local.js");
-        var opencpu = require("opencpu");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
@@ -341,8 +322,6 @@ module.exports = {
      }
      */
     dataEditExportDB: function(opt, callback) {
-      var local = require("../../config/local.js");
-      var opencpu = require("opencpu");
       //rpc接口选项
       var RPCOpt = {
         server: local.opencpu.server,

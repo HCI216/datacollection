@@ -69,10 +69,15 @@ module.exports = {
             });
     },
     getOne: function(id) {
+      var start = new Date();
+
         return DatasetsInfo
             .findOne(id)
             .populate('owner')
             .then(function(model) {
+            var middle = new Date();
+
+            console.log('====getone: ' + (middle.getTime() - start.getTime()));
                 return [model];
             });
     }
