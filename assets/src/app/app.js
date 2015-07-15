@@ -5,7 +5,6 @@ angular.module( 'sailng', [
   'angularMoment',
   'angularFileUpload',
   'lodash',
-  'angularMoment',
   'ui.bootstrap',
   //'flash',
   'templates-app',
