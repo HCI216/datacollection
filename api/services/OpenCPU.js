@@ -14,7 +14,6 @@ module.exports = {
      */
     dataReadIntoDB: function(opt, callback) {
 
-        console.log("------file path" + fullpath + " into db!");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
