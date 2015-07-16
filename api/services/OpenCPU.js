@@ -1,3 +1,4 @@
+var path = require('path');
 var local = require("../../config/local.js");
 var opencpu = require("opencpu");
 var exec = require('child_process').exec;
@@ -13,7 +14,8 @@ module.exports = {
      }
      */
     dataReadIntoDB: function(opt, callback) {
-
+        var fullpath = path.join(opt.fold, opt.name);
+        console.log("------file path" + fullpath + " into db!");
         //rpc接口选项
         var RPCOpt = {
             server: local.opencpu.server,
